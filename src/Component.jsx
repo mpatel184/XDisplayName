@@ -8,7 +8,14 @@ export default function Component(){
 
     const displayName = (e) => {
         e.preventDefault()
-        setFullName(`${firstname} ${lastname}`);
+        const trimmedFirstName = firstname.trim();
+        const trimmedLastName = lastname.trim();
+
+        if (trimmedFirstName && trimmedLastName) {
+            setFullName(`${trimmedFirstName} ${trimmedLastName}`);
+        } else {
+            setFullName("");
+        }
         setFirstName("")
         setLastName("")
     }
