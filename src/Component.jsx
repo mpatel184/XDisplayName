@@ -34,7 +34,7 @@ export default function Component(){
                 <button type="submit">Submit</button>
                 </form>
 
-                <h3>{fullname}</h3>
+                {fullname && <h3>Full Name: {fullname}</h3>}
             </div>
         </div>
     )
