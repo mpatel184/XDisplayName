@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function Component(){
 
@@ -6,8 +6,9 @@ export default function Component(){
     const [lastname,setLastName] = useState("")
     const [fullname,setFullName] = useState("")
 
-    const displayName = () => {
-        setFullName(`${firstname} ${lastname}`)
+    const displayName = (e) => {
+        e.preventDefault()
+        setFullName(`${firstname} ${lastname}`);
         setFirstName("")
         setLastName("")
     }
@@ -16,14 +17,14 @@ export default function Component(){
         <div style={{position:"absolute",top:"50px",left:"30px"}}>
             <h1>Full Name Display</h1>
             <div className="name-field">
-                <form>
+                <form onSubmit={displayName}>
                 <label htmlFor="first-name">First Name:</label>
                 <input type="text" name="first-name" id="first_name" onChange={(e) => setFirstName(e.target.value)} required/>
                 <br/>
                 <label htmlFor="last-name">Last Name:</label>
                 <input type="text" name="last-name" id="last" onChange={(e) => setLastName(e.target.value)} required/>
                 <br/>
-                <button onClick={displayName} style={{border:"1px solid black"}}>Submit</button>
+                <button type="submit">Submit</button>
                 </form>
 
                 <h3>{fullname}</h3>
